@@ -1,0 +1,69 @@
+body { background: #143040; font-family: HelveticaNeue; padding: 0; margin: 0; }
+
+#main { margin-left: auto; margin-right: auto; width: 960px; }
+
+.part { padding: 20px; }
+
+#first_part { background-color: #3ddb86; color: black; }
+
+#first_part #lang { float: right; }
+
+#first_part #lang a, #first_part #lang a:visited { color: black; }
+
+#first_part img { border-radius: 50%; width: 115px; height: 115px; float: left; margin-right: 20px; margin-bottom: 20px; background-color: white; }
+
+#first_part h1 { margin-bottom: 0; }
+
+#first_part h2 { font-weight: lighter; margin-top: 0; }
+
+#first_part .contact { display: flex; border-top: 1px solid; border-bottom: 1px solid; border-color: black; padding: 10px 0; }
+
+#first_part .contact a, #first_part .contact a:visited { color: black; }
+
+#first_part .contact span { flex-grow: 1; }
+
+#first_part .contact span .fas, #first_part .contact span .fab { margin-right: 10px; }
+
+#first_part .contact .location::before { content: "fas fa-home"; font-family: "FontAwesome"; }
+
+#first_part .intro { margin-top: 20px; font-size: 1.5em; line-height: 150%; }
+
+#second_part { color: black; background-color: #E2F9E1; }
+
+#second_part h2 { padding-bottom: 10px; border-bottom: 2px solid black; }
+
+#second_part ul { list-style: none; padding: 0; }
+
+#second_part ul li { margin: 10px; }
+
+#third_part { color: black; background-color: #B9F0CB; }
+
+#third_part .experience { display: flex; }
+
+#third_part .experience p { margin: 0; font-size: 1.2em; }
+
+#third_part .experience .year { flex: 0 0; margin-right: 20px; margin-bottom: 20px; }
+
+#third_part .experience .year div { border-radius: 5px; background-color: #3ddb86; color: black; font-size: 0.8em; padding: 10px; font-weight: bolder; min-width: 80px; text-align: center; }
+
+#third_part .experience .what { flex: 1; }
+
+#third_part .experience .what a { color: black; }
+
+#third_part .experience .what ul { list-style: none; padding: 0; margin-bottom: 40px; margin-top: 10px; }
+
+#third_part .experience .what ul li { margin-bottom: 5px; font-size: 0.9em; }
+
+#fourth_part { background-color: #86E6A9; }
+
+#fourth_part .box { float: left; margin-right: 20px; margin-bottom: 20px; border-radius: 5px; background-color: #3ddb86; font-size: 0.8em; padding: 10px; font-weight: bolder; min-width: 80px; text-align: center; }
+
+#fourth_part #disclaimer { border-top: 3px solid black; width: 50%; margin: 40px auto; padding: 40px; text-align: center; }
+
+.left_column { width: 450px; float: left; }
+
+.right_column { width: 450px; float: right; }
+
+.clear { clear: both; }
+
+/*# sourceMappingURL=main.css.map */
