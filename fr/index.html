@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/screen.css" media="screen">
+    <link rel="stylesheet" href="assets/css/print.css" media="print">
+    <link href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<script type="text/javascript">
+
+    let systemInitiatedDark = window.matchMedia("(prefers-color-scheme: dark)");
+    let theme = sessionStorage.getItem('theme');
+
+    function isDarkMode() {
+        let theme = sessionStorage.getItem('theme');
+
+        if (theme === "dark") {
+            return true
+        } else if (theme === "light") {
+            return false
+        }
+        else {
+            return systemInitiatedDark.matches
+        }
+    }
+
+    function unsetDarkMode() {
+        sessionStorage.setItem('theme', null);
+    }
+
+    function forceDarkMode(isDark) {
+        let dataTheme;
+        if (isDark) {
+            dataTheme = 'dark';
+        } else {
+            dataTheme = 'light';
+        }
+        document.documentElement.setAttribute('data-theme', dataTheme);
+        sessionStorage.setItem('theme', dataTheme);
+
+        showDarkMode();
+    }
+
+    function showDarkMode() {
+        if (isDarkMode()) {
+            document.getElementById("theme-switcher").checked = true
+        } else {
+            document.getElementById("theme-switcher").checked = false
+        }
+    }
+
+    function toggleDarkMode() {
+        forceDarkMode(!isDarkMode())
+    }
+
+    systemInitiatedDark.addListener((systemInitiatedDark) => {
+        unsetDarkMode();
+        forceDarkMode(isDarkMode())
+        showDarkMode()
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById("theme-switcher").addEventListener('change', (event) => {
+            toggleDarkMode();
+        })
+        forceDarkMode(isDarkMode())
+    })
+
+</script>
+
+<body style="print-color-adjust:exact;">
+    <div id="main">
+
+        <div class="part" id="header-section">
+
+            <div id="controls">
+                <div id="dark" onclick="toggleDarkMode()">
+                    Mode sombre
+                    <label class="switch">
+                        <input type="checkbox" id="theme-switcher">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <span id="lang">
+                    
+                    <a href="/">See in english</a>
+                    
+                </span>
+            </div>
+
+            <img src="assets/images/photo-light.png" />
+
+            <div>
+                <h1>Benjamin Orsini</h1>
+                <h2>Lead Développeur mobile</h2>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="contact">
+                <span><i class="fas fa-location-arrow"></i>Remote depuis Bordeaux (FR)</span>
+                <span><i class="fas fa-envelope"></i><a
+                        href="mailto:github.o7tgl@simplelogin.com">github.o7tgl@simplelogin.com</a></span>
+                <span><i class="fab fa-github"></i><a href="https://github.com/borsini">borsini</a></span>
+                <span><i class="fab fa-twitter"></i><a
+                        href="https://twitter.com/benjaminorsini">benjaminorsini</a></span>
+                <span><i class="fab fa-mastodon"></i><a href="https://androiddev.social/@benjo">BenjO</a></span>
+            </div>
+
+            <div class="intro">
+                Expert en développement mobile avec plus de douze ans d'expérience pratique. Je contribue à guider les équipes vers l'excellence, à encourager la vision produit et la maîtrise technique dans la création d'apps natives riches en fonctionnalités à fort trafic. Prônant les meilleures pratiques, j'accompagne les ingénieurs en cultivant un esprit de collaboration.
+            </div>
+
+        </div>
+
+
+        <div class="part" id="talks-and-articles">
+            <h1>Conférences, articles et vidéos</h1>
+
+            <ul>
+                
+                <li>🎥 <a href="./assets/videos/bike-companion-poc-demo.mp4">POC app Bike companion (BLE, Ant+, entrainements structurés)</a></li>
+                
+                <li>🎤 <a href="https://twitter.com/ParisAndroidUG/status/1575115222670577665">Jetpack Compose @Swile, rétrospective de l’année passée</a> 🇫🇷</li>
+                
+                <li>📖 <a href="https://medium.com/swile-engineering/lock-your-android-dependencies-d22fe98ae12f">Lock your Android dependencies</a> 🇬🇧</li>
+                
+                <li>📖 <a href="https://medium.com/swile-engineering/organize-your-development-to-avoid-big-pull-requests-a3f1ba69ca7f">How to avoid big pull requests</a> 🇬🇧</li>
+                
+                <li>📖 <a href="https://medium.com/appaloosa-store-engineering/embracing-legacy-on-android-9045b45e25f4">Embracing legacy on Android</a> 🇬🇧</li>
+                
+            </ul>
+        </div>
+
+
+
+        <div class="part" id="experience-section">
+
+            <h1>Expériences</h1>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>depuis 2021</span></div>
+                <h3 class="title">Développeur Android Sénior<br/>Swile (remote - 1000+ salariés)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Conception et maintenance de <a href="https://play.google.com/store/apps/details?id=hr.lunc.client">l'application native Android Swile</a> (600k utilisateurs)</li>
+                        
+                        <li>Amélioration des processus de développement de la guilde mobile: intégration/déploiement continus, tests unitaires + screenshots automatisés, guidelines d'architecture & revue de code, linters, lock de dépendances et gestion des warnings</li>
+                        
+                        <li>R&D: mise en place d'un module KMP (Kotlin MultiPlatform) pour le partage de logique métier entre Android et iOS</li>
+                        
+                        <li>Chantiers transverses avec fort impact: BFF, authentification double-facteur, design-system, recaptcha, feature flags, cache local, optimisation du temps de démarrage de l'app</li>
+                        
+                        <li>Pairing et mentoring</li>
+                        
+                        <li>Partage de connaissances en interne et en externe (talks, publications)</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2018 - 2021</span></div>
+                <h3 class="title">Développeur Android Sénior & lead de l'équipe frontend<br/>Appaloosa (remote partiel - 15 salariés)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Management de l'équipe front-end d'<a href="https://www.appaloosa.io/">Appaloosa</a> (iOS/Android/Web) composée de 5 personnes. Suivi de carrière, 1to1 et mentoring des développeurs juniors (pair programming, code review, coding katas).</li>
+                        
+                        <li>Conception des architectures Android et des APIs de webservices</li>
+                        
+                        <li>Développement de la nouvelle version de l'app Android (clean archi, feature modules)</li>
+                        
+                        <li>Veille constante de l'écosystème Android Entreprise</li>
+                        
+                        <li>Elaboration des processus agiles de l'entreprise</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2017 - 2018</span></div>
+                <h3 class="title">Développeur mobile sénior<br/>CDiscount (2k salariés)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Developpement de <a href="https://play.google.com/store/apps/details?id=cdiscount.mobile">l'application Android et iOS CDiscount</a> CDiscount (10M+ téléchargements)</li>
+                        
+                        <li>React Native</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2015 - 2017</span></div>
+                <h3 class="title">Développeur Android sénior<br/>Cultura (4k salariés)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Conception, design, développement et maintenance de l'application des conseillers de ventes Cultura</li>
+                        
+                        <li>Utilisée quotidiennement dans plus de 80 magasins et sur plus de 2000 terminaux</li>
+                        
+                        <li>Les données sont servies depuis une architectures de microservices et des mises à jour temps-réel sont envoyées à l'app depuis un bus de données.</li>
+                        
+                        <li>Java, RabbitMQ, Sketch</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2011 - 2015</span></div>
+                <h3 class="title">Développeur mobile & ScrumMaster<br/>Clever-Age (30 salariés)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Suivi de projet (+ de 10) en mode agile avec des équipes de 2 à 5 personnes</li>
+                        
+                        <li>Développement natif et multi-plateformes (ObjectiveC, Java, Cocos2DX, Xamarin)</li>
+                        
+                        <li>Formateur iOS and Android</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2010</span></div>
+                <h3 class="title">Développeur<br/>Logica</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Développement et maintenance de logiciels Web et Unix en Java J2E, C, KSH, C# .NET</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2009</span></div>
+                <h3 class="title">Développeur 3D<br/>INRIA</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Développement d'une bibliothèque de multitouch 3D en C++ et OpenGL</li>
+                        
+                        <li>Participation à <a href="https://hal.inria.fr/inria-00567650">un papier de recherche scientifique publié</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+
+        <div class="part">
+
+            <h1>Compétences</h1>
+
+            <div id="skills-section">
+                <div class="skill">
+                    <h2>Développement mobile et frontend</h2>
+                    <ul>
+                        
+                        <li>Android: Kotlin/Java, Compose, Flow, Coroutines</li>
+                        
+                        <li>iOS: ObjC</li>
+                        
+                        <li>Multi-platformes: Kotlin Multiplatform (KMP), React native, Xamarin</li>
+                        
+                        <li>Web: Angular</li>
+                        
+                    </ul>
+                </div>
+
+                <div class="skill">
+                    <h2>Développement backend</h2>
+                    <ul>
+                        <li>Ktor et GraphQL</li>
+                        <li>Django</li>
+                        <li>OpenAPI</li>
+                    </ul>
+                </div>
+                <div class="skill">
+
+                    <h2>Qualité de code et IC</h2>
+                    <ul>
+                        <li>Tests unitaires et d'interface</li>
+                        <li>Linters de code</li>
+                        <li>Github, Bitrise, CircleCI, Gradle, Kotlin-script</li>
+                    </ul>
+                </div>
+
+                <div class="skill">
+                    <h2>Architecture & conception</h2>
+                    <ul>
+                        <li>Clean archi et architecture modulaire</li>
+                        <li>Separation of concerns, MVVM</li>
+                        <li>Reactive and functional programming</li>
+                        <li>Offline first, optimistic UI</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h2>Gestion de projet</h2>
+                    <ul>
+                        <li>Certifié ScrumMaster</li>
+                    </ul>
+                </div>
+
+                <div class="skill">
+                    <h2>Langues</h2>
+                    <ul>
+                        <li>Français 🇫🇷 (natif)</li>
+                        <li>Anglais 🇬🇧 (courant)</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h2>Contributions Open Source</h2>
+                    <ul>
+                        <li>Exodus Privacy</li>
+                        <li>Kotlin</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="part" id="diploma-section">
+            <h1>Diplômes</h1>
+
+            <div class="clear">
+                <span class="box">2009</span>
+                <span>Master informatique en Images de Synthèse et Réalité Virtuelle<br/>Université Bordeaux 1, Talence, FR</span>
+            </div>
+
+            <div class="clear">
+                <span class="box">2006</span>
+                <span>D.U.T informatique<br/>I.U.T informatique, Bayonne, FR</span>
+            </div>
+
+            <div class="clear" id="disclaimer">
+                🚴, 🏊 et 🏃 en amateur.<br />J'🎧 énormément de 🎵 !
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

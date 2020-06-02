@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/screen.css" media="screen">
+    <link rel="stylesheet" href="assets/css/print.css" media="print">
+    <link href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<script type="text/javascript">
+
+    let systemInitiatedDark = window.matchMedia("(prefers-color-scheme: dark)");
+    let theme = sessionStorage.getItem('theme');
+
+    function isDarkMode() {
+        let theme = sessionStorage.getItem('theme');
+
+        if (theme === "dark") {
+            return true
+        } else if (theme === "light") {
+            return false
+        }
+        else {
+            return systemInitiatedDark.matches
+        }
+    }
+
+    function unsetDarkMode() {
+        sessionStorage.setItem('theme', null);
+    }
+
+    function forceDarkMode(isDark) {
+        let dataTheme;
+        if (isDark) {
+            dataTheme = 'dark';
+        } else {
+            dataTheme = 'light';
+        }
+        document.documentElement.setAttribute('data-theme', dataTheme);
+        sessionStorage.setItem('theme', dataTheme);
+
+        showDarkMode();
+    }
+
+    function showDarkMode() {
+        if (isDarkMode()) {
+            document.getElementById("theme-switcher").checked = true
+        } else {
+            document.getElementById("theme-switcher").checked = false
+        }
+    }
+
+    function toggleDarkMode() {
+        forceDarkMode(!isDarkMode())
+    }
+
+    systemInitiatedDark.addListener((systemInitiatedDark) => {
+        unsetDarkMode();
+        forceDarkMode(isDarkMode())
+        showDarkMode()
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById("theme-switcher").addEventListener('change', (event) => {
+            toggleDarkMode();
+        })
+        forceDarkMode(isDarkMode())
+    })
+
+</script>
+
+<body style="print-color-adjust:exact;">
+    <div id="main">
+
+        <div class="part" id="header-section">
+
+            <div id="controls">
+                <div id="dark" onclick="toggleDarkMode()">
+                    Dark mode
+                    <label class="switch">
+                        <input type="checkbox" id="theme-switcher">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <span id="lang">
+                    
+                    <a href="/fr">Voir en français</a>
+                    
+                </span>
+            </div>
+
+            <img src="assets/images/photo-light.png" />
+
+            <div>
+                <h1>Benjamin Orsini</h1>
+                <h2>Mobile lead developer</h2>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="contact">
+                <span><i class="fas fa-location-arrow"></i>Remote from Bordeaux (FR)</span>
+                <span><i class="fas fa-envelope"></i><a
+                        href="mailto:github.o7tgl@simplelogin.com">github.o7tgl@simplelogin.com</a></span>
+                <span><i class="fab fa-github"></i><a href="https://github.com/borsini">borsini</a></span>
+                <span><i class="fab fa-twitter"></i><a
+                        href="https://twitter.com/benjaminorsini">benjaminorsini</a></span>
+                <span><i class="fab fa-mastodon"></i><a href="https://androiddev.social/@benjo">BenjO</a></span>
+            </div>
+
+            <div class="intro">
+                Mobile development expert with twelve years of hands-on experience. I contribute to guiding teams towards excellence, fostering vision and technical mastery in delivering high-traffic, feature-rich native apps. Advocating for best practices, I support engineers in thriving within a collaborative environment.
+            </div>
+
+        </div>
+
+
+        <div class="part" id="talks-and-articles">
+            <h1>Confs, articles and videos</h1>
+
+            <ul>
+                
+                <li>🎥 <a href="./assets/videos/bike-companion-poc-demo.mp4">Bike companion proof of concept app (BLE, Ant+, structured workouts)</a></li>
+                
+                <li>🎤 <a href="https://twitter.com/ParisAndroidUG/status/1575115222670577665">Jetpack Compose @Swile, last year retrospective</a> 🇫🇷</li>
+                
+                <li>📖 <a href="https://medium.com/swile-engineering/lock-your-android-dependencies-d22fe98ae12f">Lock your Android dependencies</a> 🇬🇧</li>
+                
+                <li>📖 <a href="https://medium.com/swile-engineering/organize-your-development-to-avoid-big-pull-requests-a3f1ba69ca7f">How to avoid big pull requests</a> 🇬🇧</li>
+                
+                <li>📖 <a href="https://medium.com/appaloosa-store-engineering/embracing-legacy-on-android-9045b45e25f4">Embracing legacy on Android</a> 🇬🇧</li>
+                
+            </ul>
+        </div>
+
+
+
+        <div class="part" id="experience-section">
+
+            <h1>Experience</h1>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>since 2021</span></div>
+                <h3 class="title">Senior Android developer<br/>Swile (remote - 1000+ headcount)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Creation and evolution of <a href="https://play.google.com/store/apps/details?id=hr.lunc.client">Swile native Android app</a> (600k users)</li>
+                        
+                        <li>Improvement of mobile guild processes: continuous integration/delivery, automated unit + screenshots testing, architecture & code review guidelines, linters, dependencies and warnings lock</li>
+                        
+                        <li>R&D: implementation of a Kotlin MultiPlatform (KMP) module for sharing business logic between Android and iOS</li>
+                        
+                        <li>Transversal work with big impact: BFF, multi factor authentication, design-system, recaptcha, feature flags, local cache, launch-time optimisation</li>
+                        
+                        <li>Pairing and mentoring</li>
+                        
+                        <li>Internal and external knowledge sharing (talks, articles)</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2018 - 2021</span></div>
+                <h3 class="title">Senior Android developer & front-end team manager<br/>Appaloosa (remote - 15 headcount)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Management of <a href="https://www.appaloosa.io/">Appaloosa</a> front-end team (iOS/Android/Web) consisting of 5 members. Career development oversight, 1-on-1 meetings, and mentoring of junior developers (pair programming, code review, coding katas).</li>
+                        
+                        <li>Mobile and API architecture decisions</li>
+                        
+                        <li>Native apps redesign (clean architecture, feature modules)</li>
+                        
+                        <li>Constant monitoring of Android Enterprise ecosystem</li>
+                        
+                        <li>Creation of company agile methodology processes</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2017 - 2018</span></div>
+                <h3 class="title">Senior mobile developer<br/>CDiscount (2k headcount)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Development of <a href="https://play.google.com/store/apps/details?id=cdiscount.mobile">CDiscount Android and iOS mobile app</a> (10M+ downloads)</li>
+                        
+                        <li>React Native</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2015 - 2017</span></div>
+                <h3 class="title">Senior Android developer<br/>Cultura (4k headcount)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Architecture, design, development and maintenance of Cultura's sales work application</li>
+                        
+                        <li>It is used daily in 80+ shops on more than 2000 phones</li>
+                        
+                        <li>Data are served using micro services and a messaging bus sends realtime updates to the app</li>
+                        
+                        <li>Java, RabbitMQ, Sketch</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2011 - 2015</span></div>
+                <h3 class="title">Mobile developer & ScrumMaster<br/>Clever-Age (30 headcount)</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Agile project management in 2 to 5 person teams on more than ten projects</li>
+                        
+                        <li>Native and cross platform mobile development (ObjectiveC, Java, Cocos2DX, Xamarin)</li>
+                        
+                        <li>iOS and Android classes (as trainer)</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2010</span></div>
+                <h3 class="title">Developer<br/>Logica</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>Development and maintenance of Web and Unix softwares in Java J2E, C, KSH, C# .NET</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="experience">
+                <div class="year"><span>2009</span></div>
+                <h3 class="title">3D developer<br/>INRIA</h3>
+                <div class="what">
+                    <ul>
+                        
+                        <li>3D multitouch library development in C++ and OpenGL</li>
+                        
+                        <li>Participation in <a href="https://hal.inria.fr/inria-00567650">a scientific paper</a> that was published</li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+
+        <div class="part">
+
+            <h1>Skills</h1>
+
+            <div id="skills-section">
+                <div class="skill">
+                    <h2>Mobile & frontend development</h2>
+                    <ul>
+                        
+                        <li>Android: Kotlin/Java, Compose, Flow, Coroutines</li>
+                        
+                        <li>iOS: ObjC</li>
+                        
+                        <li>Multiplatform: Kotlin Multiplatform (KMP), React native, Xamarin</li>
+                        
+                        <li>Web: Angular</li>
+                        
+                    </ul>
+                </div>
+
+                <div class="skill">
+                    <h2>Backend development</h2>
+                    <ul>
+                        <li>Ktor and GraphQL</li>
+                        <li>Django</li>
+                        <li>OpenAPI</li>
+                    </ul>
+                </div>
+                <div class="skill">
+
+                    <h2>Code quality & CI</h2>
+                    <ul>
+                        <li>Unit and automated UI testing</li>
+                        <li>Code linters</li>
+                        <li>Github, Bitrise, CircleCI, Gradle, Kotlin-script</li>
+                    </ul>
+                </div>
+
+                <div class="skill">
+                    <h2>Architecture & conception</h2>
+                    <ul>
+                        <li>Modular and clean architectures</li>
+                        <li>Separation of concerns, MVVM</li>
+                        <li>Reactive and functional programming</li>
+                        <li>Offline first, optimistic UI</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h2>Project management</h2>
+                    <ul>
+                        <li>Certified ScrumMaster</li>
+                    </ul>
+                </div>
+
+                <div class="skill">
+                    <h2>Languages</h2>
+                    <ul>
+                        <li>French 🇫🇷 (native)</li>
+                        <li>English 🇬🇧 (fluent)</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h2>OSS contributions</h2>
+                    <ul>
+                        <li>Exodus Privacy</li>
+                        <li>Kotlin</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="part" id="diploma-section">
+            <h1>Education</h1>
+
+            <div class="clear">
+                <span class="box">2009</span>
+                <span>Computer degree in Image Synthesis and Virtual Reality<br/>Université Bordeaux 1, Talence, FR</span>
+            </div>
+
+            <div class="clear">
+                <span class="box">2006</span>
+                <span>D.U.T in computer science<br/>I.U.T informatique, Bayonne, FR</span>
+            </div>
+
+            <div class="clear" id="disclaimer">
+                I'm an amateur 🚴, 🏊 and 🏃.<br/>I 🎧 to a lot of 🎵!
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
